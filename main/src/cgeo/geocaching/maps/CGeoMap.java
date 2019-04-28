@@ -785,7 +785,7 @@ public class CGeoMap extends AbstractMap implements ViewFactory, OnCacheTapListe
             case R.id.menu_clear_trailhistory: {
                 DataStore.clearTrailHistory();
                 overlayPositionAndScale.setHistory(new ArrayList<Location>());
-                mapView.repaintRequired(overlayPositionAndScale);
+                mapView.repaintRequired(overlayPositionAndScale instanceof GeneralOverlay ? ((GeneralOverlay) overlayPositionAndScale) : null);
                 ActivityMixin.showToast(activity, res.getString(R.string.map_trailhistory_cleared));
                 return true;
             }
